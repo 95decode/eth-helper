@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	keystore "github.com/ethereum/go-ethereum/accounts/keystore"
+	key "github.com/95decode/eth-helper/utils/key"
 )
 
 // makeWizard creates and returns a new puppeth wizard.
@@ -29,31 +29,29 @@ func (w *wizard) run() {
 		choice := w.read()
 		switch {
 		case choice == "" || choice == "1":
-			fmt.Println("fooooooo")
+			fmt.Println()
+			fmt.Println("Encrypt (y/n)")
+			encrypted := w.confirm()
 
-			_, ks := tmp(true)
+			_, ks := key.GenerateKey(encrypted)
 
-			a, err := ks.NewAccount("foo")
+			fmt.Println()
+			fmt.Println("passphrase")
+
+			passphrase := w.read()
+			a, err := ks.NewAccount(passphrase)
 			if err != nil {
-				fmt.Println("error 1")
+				fmt.Println("error")
 			}
 
-			fmt.Println(a.Address)
+			fmt.Println()
+			fmt.Println("Address : ", a.Address)
 		case choice == "2":
-			fmt.Println("baaaaaar")
+			fmt.Println("222")
 		case choice == "3":
 			fmt.Println(w.flag)
 		default:
 			fmt.Println("That's not something I can do")
 		}
 	}
-}
-
-func tmp(encrypted bool) (string, *keystore.KeyStore) {
-	d := "./"
-	newKs := keystore.NewPlaintextKeyStore
-	if encrypted {
-		newKs = func(kd string) *keystore.KeyStore { return keystore.NewKeyStore(kd, 2, 1) }
-	}
-	return d, newKs(d)
 }
