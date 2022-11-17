@@ -1,7 +1,7 @@
 package key
 
 import (
-	keystore "github.com/ethereum/go-ethereum/accounts/keystore"
+	"github.com/ethereum/go-ethereum/accounts/keystore"
 )
 
 func GenerateKey(encrypted bool) (string, *keystore.KeyStore) {

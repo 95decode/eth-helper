@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	key "github.com/95decode/eth-helper/utils/key"
+	"github.com/95decode/eth-helper/utils/key"
 )
 
 // makeWizard creates and returns a new puppeth wizard.
