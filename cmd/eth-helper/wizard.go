@@ -18,24 +18,18 @@ func (w *wizard) read() string {
 	return strings.TrimSpace(text)
 }
 
-/*
-	func (w *wizard) readString() string {
-		for {
-			text := promptInput("> ")
-			if text = strings.TrimSpace(text); text != "" {
-				return text
-			}
-		}
+func (w *wizard) confirm() bool {
+	text := promptInput("> ")
+	switch text {
+	case "y":
+		return true
+	case "n":
+		return false
+	default:
+		return false
 	}
+}
 
-	func (w *wizard) readDefaultString(def string) string {
-		text := promptInput("> ")
-		if text = strings.TrimSpace(text); text != "" {
-			return text
-		}
-		return def
-	}
-*/
 func promptInput(p string) string {
 	for {
 		text, err := prompt.Stdin.PromptInput(p)
