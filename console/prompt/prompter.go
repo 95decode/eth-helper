@@ -1,3 +1,5 @@
+// This package is forked from go-ethereum
+// See <github.com/ethereum/go-ethereum/console/prompt>
 package prompt
 
 import (
