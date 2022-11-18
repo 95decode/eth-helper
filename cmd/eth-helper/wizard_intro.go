@@ -29,15 +29,18 @@ func (w *wizard) run() {
 		switch {
 		case choice == "" || choice == "1":
 			fmt.Println()
-			fmt.Println("Encrypt (y/n)")
+			fmt.Println("Encrypt")
 
 			encrypted := w.confirm()
+			passphrase := ""
 			_, ks := key.GenerateKey(encrypted)
 
-			fmt.Println()
-			fmt.Println("passphrase")
+			if encrypted {
+				fmt.Println()
+				fmt.Println("passphrase")
+				passphrase = w.read()
+			}
 
-			passphrase := w.read()
 			a, err := ks.NewAccount(passphrase)
 			if err != nil {
 				fmt.Println("error")
