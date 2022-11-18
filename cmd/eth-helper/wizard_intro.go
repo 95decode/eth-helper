@@ -14,7 +14,7 @@ func makeWizard(flag string) *wizard {
 
 func (w *wizard) run() {
 	fmt.Println("+-----------------------------------------------------------+")
-	fmt.Println("| test 													 |")
+	fmt.Println("|------------------------ETH  HELPER------------------------|")
 	fmt.Println("+-----------------------------------------------------------+")
 	fmt.Println()
 
@@ -38,7 +38,7 @@ func (w *wizard) run() {
 			if encrypted {
 				fmt.Println()
 				fmt.Println("passphrase")
-				passphrase = w.read()
+				passphrase = w.readPassword()
 			}
 
 			a, err := ks.NewAccount(passphrase)
