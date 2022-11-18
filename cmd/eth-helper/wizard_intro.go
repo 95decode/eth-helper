@@ -6,7 +6,6 @@ import (
 	"github.com/95decode/eth-helper/utils/key"
 )
 
-// makeWizard creates and returns a new puppeth wizard.
 func makeWizard(flag string) *wizard {
 	return &wizard{
 		flag: flag,
@@ -31,8 +30,8 @@ func (w *wizard) run() {
 		case choice == "" || choice == "1":
 			fmt.Println()
 			fmt.Println("Encrypt (y/n)")
-			encrypted := w.confirm()
 
+			encrypted := w.confirm()
 			_, ks := key.GenerateKey(encrypted)
 
 			fmt.Println()
